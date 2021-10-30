@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route } from 'react-router-dom';
+import Home from './components/Home/Home';
 import Footer from './components/Shared/Footer/Footer';
 import Header from './components/Shared/Header/Header';
 
@@ -8,8 +9,8 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <Header></Header>
-                <Route>
-
+                <Route exact path="/">
+                    <Home />
                 </Route>
                 <Footer></Footer>
             </BrowserRouter>

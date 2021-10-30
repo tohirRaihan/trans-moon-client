@@ -7,41 +7,21 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
-    const { signInUsingGoogle, logInUsingEmailPassword } = useAuth();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const { signInUsingGoogle } = useAuth();
     const [error, setError] = useState('');
     const location = useLocation();
     const history = useHistory();
     const redirectUri = location.state?.from || '/home';
 
-    const handleEmail = (event) => {
-        setEmail(event.target.value);
-    };
-    const handlePassword = (event) => {
-        setPassword(event.target.value);
-    };
-
-    // login using email and password
-    const handleLogin = (event) => {
-        event.preventDefault();
-        logInUsingEmailPassword(email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                console.log(user);
-                setError('');
+    // login using google
+    const handleGoogleLogin = () => {
+        signInUsingGoogle()
+            .then((result) => {
                 history.push(redirectUri);
             })
             .catch((error) => {
                 setError(error.message);
             });
-    };
-
-    // login using google
-    const handleGoogleLogin = () => {
-        signInUsingGoogle().then((result) => {
-            history.push(redirectUri);
-        });
     };
     return (
         <div className="container pt-sm-5 mt-5">
@@ -55,7 +35,7 @@ const Login = () => {
                         />
 
                         <div className="card-body px-5">
-                            <form onSubmit={handleLogin}>
+                            <form>
                                 {error ? (
                                     <p className="text-danger">{error}</p>
                                 ) : (
@@ -63,7 +43,6 @@ const Login = () => {
                                 )}
                                 <div className="mb-3">
                                     <input
-                                        onBlur={handleEmail}
                                         type="email"
                                         className="form-control py-2"
                                         placeholder="Your email"
@@ -72,14 +51,13 @@ const Login = () => {
 
                                 <div className="mb-3">
                                     <input
-                                        onBlur={handlePassword}
                                         type="password"
                                         className="form-control py-2"
                                         placeholder="Password"
                                     />
                                 </div>
                                 <button
-                                    type="submit"
+                                    type="button"
                                     className="btn btn-primary d-block col-5 mx-auto my-3"
                                 >
                                     Login
@@ -101,9 +79,7 @@ const Login = () => {
                             </form>
                         </div>
                         <div className="card-footer text-center py-3">
-                            <Link to="/register">
-                                Don't have an account yet?
-                            </Link>
+                            <Link to="/login">Don't have an account yet?</Link>
                         </div>
                     </div>
                 </div>

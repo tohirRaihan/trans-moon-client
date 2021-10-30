@@ -3,10 +3,10 @@ import Logo from '../../../images/logo.svg';
 import User from '../../../images/user.png';
 import { Button, Container, Image, Nav, Navbar } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
-// import useAuth from '../../../hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
 
 const Header = () => {
-    // const { user, logOut } = useAuth();
+    const { user, logOut } = useAuth();
     return (
         <header>
             <Navbar
@@ -38,21 +38,28 @@ const Header = () => {
                                 Home
                             </NavLink>
                             <NavLink
-                                to="/appoinment"
+                                to="/my-orders"
                                 activeClassName="active"
                                 className="nav-link"
                             >
-                                Appoinment
+                                My Orders
                             </NavLink>
                             <NavLink
-                                to="/contact"
+                                to="/manage-all-orders"
                                 activeClassName="active"
                                 className="nav-link"
                             >
-                                Contact Us
+                                Manage All Orders
+                            </NavLink>
+                            <NavLink
+                                to="/add-service"
+                                activeClassName="active"
+                                className="nav-link"
+                            >
+                                Add A New Service
                             </NavLink>
                         </Nav>
-                        {/* {user?.email ? (
+                        {user?.email ? (
                             <>
                                 <Image src={User} rounded fluid width="30" />
                                 <Navbar.Text className="ms-1 me-3">
@@ -75,7 +82,7 @@ const Header = () => {
                             >
                                 Login
                             </Link>
-                        )} */}
+                        )}
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

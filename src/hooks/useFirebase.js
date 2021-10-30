@@ -4,8 +4,6 @@ import {
     signInWithPopup,
     GoogleAuthProvider,
     onAuthStateChanged,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
     signOut
 } from 'firebase/auth';
 import { useEffect } from 'react';
@@ -20,14 +18,6 @@ const useFirebase = () => {
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
-
-    const signUpUsingEmailPassword = (name, email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password)
-    };
-
-    const logInUsingEmailPassword = (email, password) => {
-        return signInWithEmailAndPassword(auth, email, password)
-    };
 
     const signInUsingGoogle = () => {
         return signInWithPopup(auth, googleProvider);
@@ -58,8 +48,6 @@ const useFirebase = () => {
     }, []);
 
     return {
-        signUpUsingEmailPassword,
-        logInUsingEmailPassword,
         signInUsingGoogle,
         logOut,
         user,

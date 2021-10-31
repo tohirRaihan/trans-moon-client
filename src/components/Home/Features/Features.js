@@ -12,9 +12,9 @@ import WarehouseImage from '../../../images/icons/warehouse.png';
 const Features = () => {
     return (
         <Container>
-            <Row className='g-4'>
+            <Row>
                 <Col xs={12} md={3}>
-                    <Card className='shadow h-100'>
+                    <Card className='shadow h-100 mb-3'>
                         <Card.Body>
                             <Card.Img
                                 className="w-50"
@@ -38,7 +38,7 @@ const Features = () => {
                     </Card>
                 </Col>
                 <Col xs={12} md={3}>
-                    <Card className='shadow h-100'>
+                    <Card className='shadow h-100 mb-3'>
                         <Card.Body>
                             <Card.Img
                                 className="w-50"
@@ -62,7 +62,7 @@ const Features = () => {
                     </Card>
                 </Col>
                 <Col xs={12} md={3}>
-                    <Card className='shadow h-100'>
+                    <Card className='shadow h-100 mb-3'>
                         <Card.Body>
                             <Card.Img
                                 className="w-50"
@@ -86,7 +86,7 @@ const Features = () => {
                     </Card>
                 </Col>
                 <Col xs={12} md={3}>
-                    <Card className='shadow h-100'>
+                    <Card className='shadow h-100 mb-3'>
                         <Card.Body>
                             <Card.Img
                                 className="w-50"

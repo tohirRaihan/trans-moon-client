@@ -31,7 +31,7 @@ const Services = () => {
             <h1 className="fw-bold mb-5 text-center">
                 Find The Right Service For You
             </h1>
-            <Row>
+            <Row className='g-4'>
                 {services.map((service) => (
                     <Service key={service._id} service={service} />
                 ))}

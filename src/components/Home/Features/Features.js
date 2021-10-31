@@ -12,7 +12,7 @@ import WarehouseImage from '../../../images/icons/warehouse.png';
 const Features = () => {
     return (
         <Container>
-            <Row>
+            <Row className='g-4'>
                 <Col xs={12} md={3}>
                     <Card className='shadow h-100'>
                         <Card.Body>

@@ -19,7 +19,7 @@ const Service = (props) => {
                 </Card.Body>
                 <Card.Footer className="d-flex justify-content-between align-items-center">
                     <div className="course-price">
-                        <span className="text-info fw-bold h3">${price}</span>
+                        <span className="text-primary fw-bold h3">${price}</span>
                     </div>
                     <div className="course-detail">
                         <Link className='btn btn-warning' to={`/placeorder/${_id}`}>

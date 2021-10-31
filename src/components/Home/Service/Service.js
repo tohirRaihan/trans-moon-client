@@ -10,11 +10,11 @@ const Service = (props) => {
     return (
         <Col xs={12} md={4}>
             <Card className="h-100">
-                <Card.Img variant="top" src={image} />
+                <Card.Img height='232' variant="top" src={image} />
                 <Card.Body>
                     <Card.Title className="fw-bold">{title}</Card.Title>
                     <Card.Text className="lead text-muted">
-                        {shortDescription}
+                        {shortDescription.substring(0,100)}...
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer className="d-flex justify-content-between align-items-center">

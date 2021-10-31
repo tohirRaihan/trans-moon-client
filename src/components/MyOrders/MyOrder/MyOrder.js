@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 
 const MyOrder = ({ order, count }) => {
-    const { serviceId, phone, address, status, } = order;
+    console.log(order);
+    const { _id, serviceId, phone, address, status } = order;
     const [service, setService] = useState({});
 
     // GET service API
@@ -15,6 +16,27 @@ const MyOrder = ({ order, count }) => {
             .then((data) => setService(data));
     }, []);
 
+    // DELETE order API
+    const handleDeleteOrder = (event, id) => {
+        console.log(id);
+        const confirmDelete = window.confirm(
+            'Do you realy want to delete this order?'
+        );
+        if (confirmDelete) {
+            fetch(`https://secure-badlands-19900.herokuapp.com/orders/${id}`, {
+                method: 'DELETE'
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        alert('Order deleted successfully!');
+                        event.target.closest('tr').style.display = 'none';
+                    }
+                });
+        }
+    };
+
     return (
         <tr>
             <td>{count}</td>
@@ -24,7 +46,13 @@ const MyOrder = ({ order, count }) => {
             <td>{address}</td>
             <td>{status}</td>
             <td>
-                <Button variant="danger" size="sm">
+                <Button
+                    onClick={(e) => {
+                        handleDeleteOrder(e, _id);
+                    }}
+                    variant="danger"
+                    size="sm"
+                >
                     X
                 </Button>
             </td>

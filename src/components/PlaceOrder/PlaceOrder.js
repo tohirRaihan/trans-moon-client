@@ -13,8 +13,6 @@ const PlaceOrder = () => {
     const phoneRef = useRef();
     const addressRef = useRef();
 
-    console.log(user);
-
     // GET service API
     useEffect(() => {
         fetch(

@@ -3,6 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import TruckImage from '../../../images/icons/delivery-truck.png';
+import VesselImage from '../../../images/icons/vessel.png';
+import ConveyorImage from '../../../images/icons/conveyor-belt.png';
+import WarehouseImage from '../../../images/icons/warehouse.png';
+
 
 const Features = () => {
     return (
@@ -13,7 +18,7 @@ const Features = () => {
                         <Card.Body>
                             <Card.Img
                                 className="w-50"
-                                src="https://cdn-icons.flaticon.com/png/512/2522/premium/2522915.png?token=exp=1635601130~hmac=6755847899e42e83adb83b35c3a6e711"
+                                src={TruckImage}
                             />
                             <Card.Title className="fw-bold mt-4">
                                 Transparent Best Pricing
@@ -37,7 +42,7 @@ const Features = () => {
                         <Card.Body>
                             <Card.Img
                                 className="w-50"
-                                src="https://cdn-icons-png.flaticon.com/512/3129/3129647.png"
+                                src={VesselImage}
                             />
                             <Card.Title className="fw-bold mt-4">
                                 The Real Time Tracking
@@ -61,7 +66,7 @@ const Features = () => {
                         <Card.Body>
                             <Card.Img
                                 className="w-50"
-                                src="https://cdn-icons.flaticon.com/png/512/3403/premium/3403042.png?token=exp=1635602019~hmac=1d99c8fcc5f6db9660f08ff1cda99c50"
+                                src={ConveyorImage}
                             />
                             <Card.Title className="fw-bold mt-4">
                                 Security Sysytem Cargo
@@ -85,7 +90,7 @@ const Features = () => {
                         <Card.Body>
                             <Card.Img
                                 className="w-50"
-                                src="https://cdn-icons-png.flaticon.com/512/2897/2897818.png"
+                                src={WarehouseImage}
                             />
                             <Card.Title className="fw-bold mt-4">
                                 Warehousing Storage

@@ -1,5 +1,8 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
+import BannerImageOne from '../../../images/banner-1.jpg';
+import BannerImageTwo from '../../../images/banner-2.jpg';
+import BannerImageThree from '../../../images/banner-3.jpg';
 
 const Banner = () => {
     return (
@@ -7,47 +10,40 @@ const Banner = () => {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    height='400'
-                    src="https://images.unsplash.com/photo-1607227063002-677dc5fdf96f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80"
+                    height="400"
+                    src={BannerImageOne}
                     alt="First slide"
                 />
                 <Carousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>
-                        Nulla vitae elit libero, a pharetra augue mollis
-                        interdum.
-                    </p>
+                    <h3 className='display-4 fw-bold'>We safely move your <br /> valuable products</h3>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    height='400'
-                    src="https://images.unsplash.com/photo-1548695607-9c73430ba065?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1025&q=80"
+                    height="400"
+                    src={BannerImageTwo}
                     alt="Second slide"
                 />
 
                 <Carousel.Caption>
-                    <h3>Second slide label</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
+                    <h3 className='display-4 fw-bold'>
+                        Professional trucking and <br />
+                        transportation services
+                    </h3>
+
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    height='400'
-                    src="https://images.unsplash.com/photo-1526367790999-0150786686a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
+                    height="400"
+                    src={BannerImageThree}
                     alt="Third slide"
                 />
 
                 <Carousel.Caption>
-                    <h3>Third slide label</h3>
-                    <p>
-                        Praesent commodo cursus magna, vel scelerisque nisl
-                        consectetur.
-                    </p>
+                    <h3 className='display-4 fw-bold'>Making transportation <br /> fast and safe</h3>
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>

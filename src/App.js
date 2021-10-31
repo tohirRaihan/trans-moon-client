@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import AddService from './components/AddService/AddService';
 import Error from './components/Error/Error';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
@@ -35,6 +36,9 @@ function App() {
                         </PrivateRoute>
                         <PrivateRoute exact path="/manage-all-orders">
                             <ManageAllOrders />
+                        </PrivateRoute>
+                        <PrivateRoute exact path="/add-service">
+                            <AddService />
                         </PrivateRoute>
 
                         <Route exact path="/login">

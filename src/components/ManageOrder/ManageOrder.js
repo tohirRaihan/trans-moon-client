@@ -55,6 +55,7 @@ const ManageOrder = ({ order, count }) => {
                 });
         }
     };
+
     return (
         <tr>
             <td>{count}</td>

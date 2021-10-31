@@ -37,27 +37,33 @@ const Header = () => {
                             >
                                 Home
                             </NavLink>
-                            <NavLink
-                                to="/my-orders"
-                                activeClassName="active"
-                                className="nav-link"
-                            >
-                                My Orders
-                            </NavLink>
-                            <NavLink
-                                to="/manage-all-orders"
-                                activeClassName="active"
-                                className="nav-link"
-                            >
-                                Manage All Orders
-                            </NavLink>
-                            <NavLink
-                                to="/add-service"
-                                activeClassName="active"
-                                className="nav-link"
-                            >
-                                Add A New Service
-                            </NavLink>
+                            {user.email ? (
+                                <>
+                                    <NavLink
+                                        to="/my-orders"
+                                        activeClassName="active"
+                                        className="nav-link"
+                                    >
+                                        My Orders
+                                    </NavLink>
+                                    <NavLink
+                                        to="/manage-all-orders"
+                                        activeClassName="active"
+                                        className="nav-link"
+                                    >
+                                        Manage All Orders
+                                    </NavLink>
+                                    <NavLink
+                                        to="/add-service"
+                                        activeClassName="active"
+                                        className="nav-link"
+                                    >
+                                        Add A New Service
+                                    </NavLink>
+                                </>
+                            ) : (
+                                ''
+                            )}
                         </Nav>
                         {user?.email ? (
                             <>

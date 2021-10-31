@@ -38,7 +38,7 @@ const PlaceOrder = () => {
             status: 'pending'
         };
         // POST new order API
-        fetch('http://localhost:5000/orders', {
+        fetch('https://secure-badlands-19900.herokuapp.com/orders', {
             method: 'POST',
             body: JSON.stringify(newOrder),
             headers: {

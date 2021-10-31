@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Error from './components/Error/Error';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
+import MyOrders from './components/MyOrders/MyOrders';
 import PlaceOrder from './components/PlaceOrder/PlaceOrder';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Footer from './components/Shared/Footer/Footer';
@@ -26,6 +27,10 @@ function App() {
 
                         <PrivateRoute path="/placeorder/:serviceId">
                             <PlaceOrder />
+                        </PrivateRoute>
+
+                        <PrivateRoute path="/my-orders">
+                            <MyOrders />
                         </PrivateRoute>
 
                         <Route exact path="/login">

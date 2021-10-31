@@ -1,17 +1,21 @@
 import React from 'react';
 import { useState } from 'react';
+import { useRef } from 'react';
 import { useEffect } from 'react';
 import { Button, Col, Container, Form, Image, Row } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const PlaceOrder = () => {
-    // const { serviceId } = useParams('id');
     const { serviceId } = useParams('id');
     const [service, setService] = useState({});
     const { user } = useAuth();
+    const phoneRef = useRef();
+    const addressRef = useRef();
+
     console.log(user);
 
+    // GET service API
     useEffect(() => {
         fetch(
             `https://secure-badlands-19900.herokuapp.com/services/${serviceId}`
@@ -19,6 +23,39 @@ const PlaceOrder = () => {
             .then((res) => res.json())
             .then((data) => setService(data));
     }, []);
+
+    // Place a new order --------------------------------------------------
+    const handleOrder = (event) => {
+        event.preventDefault();
+        const phone = phoneRef.current.value;
+        const address = addressRef.current.value;
+        const newOrder = {
+            phone,
+            address,
+            userId: user.uid,
+            userEmail: user.email,
+            serviceId: service._id,
+            status: 'pending'
+        };
+        // POST new order API
+        fetch('http://localhost:5000/orders', {
+            method: 'POST',
+            body: JSON.stringify(newOrder),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.insertedId) {
+                    alert('Order placed successfully!');
+                    event.target.reset();
+                } else {
+                    alert('Something went wrong please try again');
+                }
+                console.log(data);
+            });
+    };
 
     return (
         <main className="placeorder my-5">
@@ -57,11 +94,12 @@ const PlaceOrder = () => {
                         <span className="fw-bold">User Email:</span>{' '}
                         {user.email}
                     </p>
-                    <Form>
+                    <Form onSubmit={handleOrder}>
                         <Form.Group className="mb-3" controlId="phoneNumbeer">
                             <Form.Control
                                 type="text"
                                 placeholder="Your phone number"
+                                ref={phoneRef}
                             />
                         </Form.Group>
                         <Form.Group
@@ -72,6 +110,7 @@ const PlaceOrder = () => {
                                 as="textarea"
                                 rows={5}
                                 placeholder="Your shipping address"
+                                ref={addressRef}
                             />
                         </Form.Group>
                         <Button variant="primary" type="submit">

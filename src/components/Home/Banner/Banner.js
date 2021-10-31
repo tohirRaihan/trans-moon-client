@@ -15,7 +15,7 @@ const Banner = () => {
                     alt="First slide"
                 />
                 <Carousel.Caption>
-                    <h3 className='display-4 fw-bold'>We safely move your <br /> valuable products</h3>
+                    <h3 className='display-4 fw-bold text-info'>We safely move your <br /> valuable products</h3>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -27,7 +27,7 @@ const Banner = () => {
                 />
 
                 <Carousel.Caption>
-                    <h3 className='display-4 fw-bold'>
+                    <h3 className='display-4 fw-bold text-info'>
                         Professional trucking and <br />
                         transportation services
                     </h3>
@@ -43,7 +43,7 @@ const Banner = () => {
                 />
 
                 <Carousel.Caption>
-                    <h3 className='display-4 fw-bold'>Making transportation <br /> fast and safe</h3>
+                    <h3 className='display-4 fw-bold text-info'>Making transportation <br /> fast and safe</h3>
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>

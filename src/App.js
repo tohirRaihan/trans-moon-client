@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Error from './components/Error/Error';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
+import ManageAllOrders from './components/ManageAllOrders/ManageAllOrders';
 import MyOrders from './components/MyOrders/MyOrders';
 import PlaceOrder from './components/PlaceOrder/PlaceOrder';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
@@ -29,8 +30,11 @@ function App() {
                             <PlaceOrder />
                         </PrivateRoute>
 
-                        <PrivateRoute path="/my-orders">
+                        <PrivateRoute exact path="/my-orders">
                             <MyOrders />
+                        </PrivateRoute>
+                        <PrivateRoute exact path="/manage-all-orders">
+                            <ManageAllOrders />
                         </PrivateRoute>
 
                         <Route exact path="/login">

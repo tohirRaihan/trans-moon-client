@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../../../images/logo.svg';
+import Logo from '../../../images/logo.png';
 import User from '../../../images/user.png';
 import { Button, Container, Image, Nav, Navbar } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';

@@ -8,6 +8,7 @@ import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
     const { signInUsingGoogle } = useAuth();
+    const [loginData, setLoginData] = useState({});
     const [error, setError] = useState('');
     const location = useLocation();
     const history = useHistory();
@@ -22,6 +23,16 @@ const Login = () => {
             .catch((error) => {
                 setError(error.message);
             });
+    };
+
+    const handleFormInputChange = (event) => {
+        const field = event.target.name;
+        const value = event.target.value;
+        const newLoginData = {...loginData};
+        newLoginData[field] = value;
+        setLoginData(newLoginData);
+
+        console.log(newLoginData);
     };
     return (
         <div className="container pt-sm-5 mt-5">
@@ -44,6 +55,8 @@ const Login = () => {
                                 <div className="mb-3">
                                     <input
                                         type="email"
+                                        name="email"
+                                        onChange={handleFormInputChange}
                                         className="form-control py-2"
                                         placeholder="Your email"
                                     />
@@ -52,6 +65,8 @@ const Login = () => {
                                 <div className="mb-3">
                                     <input
                                         type="password"
+                                        name='password'
+                                        onChange={handleFormInputChange}
                                         className="form-control py-2"
                                         placeholder="Password"
                                     />

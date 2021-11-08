@@ -8,6 +8,7 @@ import ManageAllOrders from './components/ManageAllOrders/ManageAllOrders';
 import MyOrders from './components/MyOrders/MyOrders';
 import PlaceOrder from './components/PlaceOrder/PlaceOrder';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Register from './components/Register/Register';
 import Footer from './components/Shared/Footer/Footer';
 import Header from './components/Shared/Header/Header';
 import AuthProvider from './context/AuthProvider';
@@ -43,6 +44,10 @@ function App() {
 
                         <Route exact path="/login">
                             <Login />
+                        </Route>
+
+                        <Route exact path="/register">
+                            <Register />
                         </Route>
 
                         <Route path="*">

@@ -7,22 +7,16 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
-    const { signInUsingGoogle } = useAuth();
+    const { signInUsingGoogle, logInUsingEmailPassword, authError } = useAuth();
     const [loginData, setLoginData] = useState({});
-    const [error, setError] = useState('');
+    // const [error, setError] = useState('');
     const location = useLocation();
     const history = useHistory();
-    const redirectUri = location.state?.from || '/home';
+    // const redirectUri = location.state?.from || '/home';
 
     // login using google
     const handleGoogleLogin = () => {
-        signInUsingGoogle()
-            .then((result) => {
-                history.push(redirectUri);
-            })
-            .catch((error) => {
-                setError(error.message);
-            });
+        signInUsingGoogle(location, history);
     };
 
     const handleFormInputChange = (event) => {
@@ -31,9 +25,13 @@ const Login = () => {
         const newLoginData = {...loginData};
         newLoginData[field] = value;
         setLoginData(newLoginData);
-
-        console.log(newLoginData);
     };
+
+    const handleLogin = (event) => {
+        event.preventDefault();
+        console.log('submit');
+        logInUsingEmailPassword(loginData.email, loginData.password, location, history)
+    }
     return (
         <div className="container pt-sm-5 mt-5">
             <div className="row justify-content-center">
@@ -46,9 +44,9 @@ const Login = () => {
                         />
 
                         <div className="card-body px-5">
-                            <form>
-                                {error ? (
-                                    <p className="text-danger">{error}</p>
+                            <form onSubmit={handleLogin}>
+                                {authError ? (
+                                    <p className="text-danger">{authError}</p>
                                 ) : (
                                     ''
                                 )}
@@ -72,7 +70,7 @@ const Login = () => {
                                     />
                                 </div>
                                 <button
-                                    type="button"
+                                    type="submit"
                                     className="btn btn-primary d-block col-5 mx-auto my-3"
                                 >
                                     Login
@@ -94,7 +92,7 @@ const Login = () => {
                             </form>
                         </div>
                         <div className="card-footer text-center py-3">
-                            <Link to="/login">Don't have an account yet?</Link>
+                            <Link to="/register">Don't have an account yet?</Link>
                         </div>
                     </div>
                 </div>

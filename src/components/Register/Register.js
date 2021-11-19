@@ -1,39 +1,39 @@
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const Register = () => {
-    const { signUpUsingEmailPassword } = useAuth();
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [registerData, setRegisterData] = useState({});
     const [error, setError] = useState('');
+    const { signUpUsingEmailPassword, isLoading, authError } = useAuth();
+    const location = useLocation();
     const history = useHistory();
 
-    // handle signup functionality
-    const handleName = (event) => {
-        setName(event.target.value);
+    const handleFormInputChange = (event) => {
+        const field = event.target.name;
+        const value = event.target.value;
+        const newRegisterData = { ...registerData };
+        newRegisterData[field] = value;
+        setRegisterData(newRegisterData);
     };
-    const handleEmail = (event) => {
-        setEmail(event.target.value);
-    };
-    const handlePassword = (event) => {
-        setPassword(event.target.value);
-    };
+
     const signUp = (event) => {
         event.preventDefault();
-        signUpUsingEmailPassword(name, email, password)
-            .then((result) => {
-                setError('');
-                alert('Registration is successfull and you are loggedin!');
-                history.push('/home');
-            })
-            .catch((error) => {
-                setError(error.message);
-            });
+
+        if (registerData.password !== registerData.confirmPassword) {
+            setError('Password did not match');
+        } else {
+            signUpUsingEmailPassword(
+                registerData.name,
+                registerData.email,
+                registerData.password,
+                location,
+                history
+            );
+            setError('');
+        }
     };
 
     return (
@@ -48,24 +48,26 @@ const Register = () => {
                         />
 
                         <div className="card-body px-5">
-                            {error ? (
-                                <p className="text-danger">{error}</p>
+                            {error || authError ? (
+                                <p className="text-danger">{error || authError}</p>
                             ) : (
                                 ''
                             )}
                             <form onSubmit={signUp}>
                                 <div className="mb-3">
                                     <input
-                                        onBlur={handleName}
                                         type="text"
+                                        name="name"
+                                        onBlur={handleFormInputChange}
                                         className="form-control py-2"
                                         placeholder="Your name"
                                     />
                                 </div>
                                 <div className="mb-3">
                                     <input
-                                        onBlur={handleEmail}
                                         type="email"
+                                        name="email"
+                                        onBlur={handleFormInputChange}
                                         className="form-control py-2"
                                         placeholder="Your email"
                                         required
@@ -73,10 +75,21 @@ const Register = () => {
                                 </div>
                                 <div className="mb-3">
                                     <input
-                                        onBlur={handlePassword}
                                         type="password"
+                                        name="password"
+                                        onBlur={handleFormInputChange}
                                         className="form-control py-2"
                                         placeholder="Password"
+                                        required
+                                    />
+                                </div>
+                                <div className="mb-3">
+                                    <input
+                                        type="password"
+                                        name="confirmPassword"
+                                        onBlur={handleFormInputChange}
+                                        className="form-control py-2"
+                                        placeholder="Confirm password"
                                         required
                                     />
                                 </div>
